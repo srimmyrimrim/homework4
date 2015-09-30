@@ -4,10 +4,10 @@ class Ball {
   float size = 10;
   color c;
 
-  Ball(float x, float y) {
+  Ball(float x, float y, float c) {
     this.x = x;
     this.y = y;
-    c = color(.5*(x-1), 255, 255);
+    this.c = color(c, 255, 255);
     vx = random(1);
     vy = random(1);
   }
@@ -35,12 +35,14 @@ ArrayList<Ball> list;
 void setup() {
   size(500, 500);
   colorMode(HSB);
+  float hue =0;
 
   list = new ArrayList<Ball>();
 
   for (int x = 20; x < width-20; x += 20) {      
     for (int y = 20; y < height-20; y += 20) {
-      list.add(new Ball(x, y));
+      list.add(new Ball(x, y, hue));
+      hue=hue+0.5;
     }    
   }
 }
